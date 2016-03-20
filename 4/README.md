@@ -61,3 +61,7 @@ For each `FILE` given as argument, `find` does one of the following things:
 
 4. Create an `etc` directory in `/tmp/$USER` and move the `*.conf` files which
    we created in exercise 3. to that directory.
+
+### Solutions
+
+In this directory.
