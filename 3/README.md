@@ -72,7 +72,7 @@ For each line, output the `N`th column delimited by `DELIM`. This includes empty
 columns (i.e. adjacent delimiters).
 Space must be wrapped in quotes (obviously).
 
-*Example:
+Example:
 
     $ cat > foo
     what the hell
