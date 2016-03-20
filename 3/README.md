@@ -22,32 +22,41 @@ Options can be passed sequentially, like this: `cmd -a -b foo`, or combined
 like this: `cmd -abfoo` (these command lines are equivalent).
 
 ### cat
+
 `$ cat FILE...`
 Concatenates the `FILE`s in the given order and writes the result to the
 standard output.
+
 However, it is used more frequently to output one `FILE`'s content:
 `$ cat FILE`
+
 or to read information from the standard input and write it to a file:
 `$ cat > FILE`
 
 ### head
+
 `$ head -N FILE...`
 Writes the first `N` lines from each `FILE` to the standard output.
+
 `$ head -cN FILE...`
 Writes the first `N` characters from each `FILE` to the standard output.
 
 ### tail
+
 `$ tail -N FILE...`
 Writes the last `N` lines from each `FILE` to the standard output.
+
 `$ tail -cN FILE...`
 Writes the last `N` characters from each `FILE` to the standard output.
 
 ### grep
 `$ grep OPTIONS PATTERN FILE...`
 Outputs the lines in `FILE` which match the given `PATTERN` (it is a regex).
+
 `OPTIONS` can be any (or none) of:
 * `-i`: make `PATTERN` case insensitive
 * `-v`: negate `PATTERN`, i.e. match anything which it does not match
+
 Example:
     $ cat > foo
     what the hell
@@ -56,10 +65,12 @@ Example:
     what the hell
 
 ### cut
+
 `$ cut -d DELIM -f N FILE...`
 For each line, output the `N`th column delimited by `DELIM`. This includes empty
 columns (i.e. adjacent delimiters).
 Space must be wrapped in quotes (obviously).
+
 *Example:
     $ cat > foo
     what the hell
@@ -69,15 +80,18 @@ Space must be wrapped in quotes (obviously).
     this
 
 ### wc
+
 `$ wc OPTIONS FILE...`
 Output the count of bytes/words/lines in each `FILE`.
 If no options are given, output each of the three.
+
 `OPTIONS` can be any (or none) of:
 * `-c`: output byte count
 * `-w`: output word count
 * `-l`: output line count
 
 ### file
+
 `$ file FILE...`
 Display the file types for each FILE.
 
