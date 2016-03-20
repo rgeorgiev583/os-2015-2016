@@ -25,7 +25,7 @@ These things can be recursively combined using the following operations:
 * `EXPR1` `EXPR2`: logical AND: matches if both `EXPR1` and `EXPR2` match.
 * `EXPR1` -o `EXPR2`: logical OR: matches if `EXPR1` or `EXPR2` matches.
 * \( `EXPR` \): changes th priority of `EXPR`.  For example:
-  \( `EXPR1` -o `EXPR2` \) 'EXPR3' evaluates the OR before the AND,
+  \( `EXPR1` -o `EXPR2` \) `EXPR3` evaluates the OR before the AND,
   contrary to normal operator precedence (AND before OR).
 
 ### Overview of semantics (how `find` works)
