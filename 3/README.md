@@ -97,6 +97,49 @@ If no options are given, output each of the three.
 `$ file FILE...`
 Display the file types for each FILE.
 
+### I/O redirection
+
+#### Redirection from/to file
+
+`$ cmd > file`
+Makes `cmd` write to `file` instead to the standard output.
+
+`$ cmd < file`
+Makes `cmd` read from `file` instead from the standard input.
+
+Example:
+
+    $ cat > foo
+    omg
+    $ wc -c foo
+    4 foo
+    $ wc -c < foo
+    4
+
+#### Pipes and pipelines
+
+`$ cmd1 | cmd2`
+Makes `cmd2` read from `cmd1`'s output, i.e. redirects `cmd1`'s output to
+`cmd2`'s input.
+Pipes can be composed into pipelines consisting of multiple pipes joined
+together.
+
+Example 1 (simple pipe):
+
+    $ cat > foo
+    what the hell
+    is this !@#$
+    $ grep what foo | wc -c
+    14
+
+Example 2 (pipeline):
+
+    $ cat > foo
+    what the hell
+    is this !@#$
+    $ grep what foo | cut -d' ' -f2 | wc -c
+    4
+
 ### For a more detailed understanding
 
 * `man bash`
