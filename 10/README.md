@@ -10,12 +10,11 @@
 	.highscore
 	Music, Misc, Drivers
 
-*Display all files starting with an e
+* Display all files starting with an e
 * Copy all files starting with a capital letter to a new directory called capitals
-	Delete all files whose extension is a single letter
-	Rename both occurences of Misc folder to Test
-	Delete all files containing m
-
+* Delete all files whose extension is a single letter
+* Rename both occurences of Misc folder to Test
+* Delete all files containing m
 * List all files containing a lowercase letter in their name, AND the nonexistant file named Hidden
 * Now show the same list, but redirect standard output to a file
 * Now show the same list, but redirect standard error to a file
