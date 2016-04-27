@@ -21,21 +21,12 @@
 * Combine 8 and 9: Redirect standard output to one file, and standard error to another
 * Create 3 files: file1, file2, file3
 * Use hostname to write the current host name into file1
-* Prevent file clobbering
 * Repeat (6). Did you get an error ?
-* Fix the error keeping the noclobber option set
 
 ## Part 2: Environment
 
 * Create a new directory named: I have $5
-* Create an alias that finds all files larger than 2k but smaller than 5k
-* Create an alias that finds all directories in /tmp owned by the current user
-* Create an alias that finds all files modified within the last 4 hours
 * Create a shell function that finds partial matches of a file name, so you could type: findpartial txt to get all files with txt in their name
-* Create an alias for cp that turns it to cp -i
-* Create an alias for rm that turns it to rm -i
-* Create an alias that prints how many files exist under current directory
-* Create an alias that prints how many executable files exist under current directory
 * Create a shell function that takes a date and prints how many files were modified in that date
 
 ## Part 3: Getting Parameters
@@ -74,12 +65,12 @@
 * Write a shell function that prints out the multiplication table. Function should take a number n and print a table sized `n*n`.
 * For example, running mul 5 should produce:
 
-        1   2   3   4   5   
-    1   1   2   3   4   5   
-    2   2   4   6   8   10  
-    3   3   6   9   12  15  
-    4   4   8   12  16  20  
-    5   5   10  15  20  25  
+        1   2   3   4   5
+    1   1   2   3   4   5
+    2   2   4   6   8   10
+    3   3   6   9   12  15
+    4   4   8   12  16  20
+    5   5   10  15  20  25
 
 * Write a shell script that includes two functions: add_contact and email_contact.
 
