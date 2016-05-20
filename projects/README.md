@@ -21,6 +21,12 @@ A log rotator's task is to *rotate* log files.  *Rotation* of a log file means t
 ### Patterns
 These are **NOT** shell glob patterns; they are actually the basename of the log file (i.e. `/var/log/kern.log` or `/var/log/syslog` or `/var/log/messages`).  It is `logrotate`'s job to find all archived versions of the log file, and to determine the number of the latest archive.
 
+## Hints
+You can use the `sort` command to sort the archives which match the pattern.
+You can use the `getopts` command to parse the short and long optional arguments.  For more info and tutorials on this topic:
+* []()
+* [Command line options: How to parse in bash using `getopt`](www.bahmanm.com/blogs/command-line-options-how-to-parse-in-bash-using-getopt)
+
 ### Configuration File Format
 
 	[PATTERN]
@@ -37,7 +43,7 @@ These are **NOT** shell glob patterns; they are actually the basename of the log
 
 
 ## Log multiplexer daemon (*Bash*)
-The idea is to
+The idea is to create something which can 
 
 ## Symlink manager (*Bash*)
 
@@ -50,6 +56,6 @@ The idea is to
 
 ## Subcommand multiplexer (*C*)
 
-##
+## 
 
 ## Simple shell (C)
