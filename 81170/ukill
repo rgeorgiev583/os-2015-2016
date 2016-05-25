@@ -1,0 +1,12 @@
+#!/bin/bash
+
+for username
+do
+  while read -r process
+  do
+    if [[ $(awk '{ print $1 }' <<< "$process") == "$username" ]]
+    then
+      kill -KILL $(awk '{ print $2 }' <<< "$process")
+    fi
+  done < <(ps aux)
+done

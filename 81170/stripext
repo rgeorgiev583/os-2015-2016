@@ -1,0 +1,27 @@
+#!/bin/bash
+
+function cut_extension()
+{
+  local filename=$1
+  local basename=$(basename $filename)
+
+  echo ${basename/\.*/}
+}
+
+if [ $# -eq 0 ]
+then
+  input=$(cat)
+
+  while read -r line
+  do
+    cut_extension $line
+  done <<< "$input"
+else
+  for filename
+  do
+    while read -r line
+    do
+      cut_extension $line
+    done < "$filename"
+  done
+fi

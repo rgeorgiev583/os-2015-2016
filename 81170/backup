@@ -1,0 +1,18 @@
+#!/bin/bash
+
+src_dir=$1
+dest_dir=$2
+
+for filename in $(find "$src_dir" -type f)
+do
+  for filename_dest in $(find "$dest_dir" -type f)
+  do
+    if ! grep "$(basename $filename).gz" <<< "$filename_dest"
+    then
+      break 2
+    fi
+  done
+
+  cp "$filename" "$dest_dir"
+  gzip -c "$dest_dir/$(basename $filename)"
+done

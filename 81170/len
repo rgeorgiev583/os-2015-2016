@@ -1,0 +1,12 @@
+#!/bin/bash
+
+ext=$1
+shift
+
+for dir
+do
+  for filename in $(find "$dir" -type f -name "*$ext" 2> /dev/null)
+  do
+    echo "$filename: $(wc -c < "$filename")"
+  done
+done
