@@ -12,7 +12,6 @@ compress()
     firstdir=$2
     seconddir=$3
     second=$(eval echo $seconddir/\${first\#$firstdir})
-    echo $first $firstdir $seconddir $second
 
     if [ -d $first ] && ! [ -e $second ]
     then
