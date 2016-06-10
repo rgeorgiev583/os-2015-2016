@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $# -lt 1 ] || [ $1 = -n ] && [ $# -lt 2 ]
+if [ $# -lt 1 ] || [ $1 = -n ] && [ $# -lt 3 ]
 then
     echo 'error: not enough arguments' 1>&2
     exit 1
