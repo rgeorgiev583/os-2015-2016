@@ -7,7 +7,7 @@ then
         echo $(ps aux | grep ^$user | grep $2 | awk '{ print $2 }')
     done
 else
-    for user in ${@:1}
+    for user in $@
     do
         echo $(ps aux | grep ^$user | awk '{ print $2 }')
     done
