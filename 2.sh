@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ $# -lt 2 ]
+then
+    echo 'error: not enough arguments' 1>&2
+    exit 1
+fi
+
 compress()
 {
     first=$1

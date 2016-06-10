@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ $# -lt 1 ] || [ $1 = -s ] && [ $# -lt 2 ]
+then
+    echo 'error: not enough arguments' 1>&2
+    exit 1
+fi
+
 if [ $1 = -s ]
 then
     total=0
