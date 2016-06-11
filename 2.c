@@ -6,33 +6,82 @@
 #include <fcntl.h>
 #include <sys/wait.h>
 
-#define BUFSIZE 1000
+bool do_count_chars, do_count_words, do_count_lines;
 
-size_t fgetlen(int fd)
+size_t fgetcounts(int fd, size_t* words, size_t* lines)
 {
-    static char buf[BUFSIZE];
-    size_t count = 0;
-    ssize_t len;
+    char ch;
+    size_t chars = 0;
+    *words = 1;
+    *lines = 1;
 
-    while (len = read(fd, buf, BUFSIZE))
-        count += len;
+    while (read(fd, &ch, 1))
+    {
+        if (ch == '\n')
+        {
+            (*lines)++;
+            (*words)++;
+        }
+        else if (ch == ' ')
+            (*words)++;
 
-    return count;
+        chars++;
+    }
+
+    return chars;
+}
+
+void fprintcounts(int fd, const char* filename)
+{
+    size_t lines, words, chars = fgetcounts(fd, &words, &lines);
+    if (do_count_lines)
+        printf(" %u", lines);
+    if (do_count_words)
+        printf(" %u", words);
+    if (do_count_chars)
+        printf(" %u", chars);
+    if (filename)
+        printf(" %s", filename);
+    printf("\n");
 }
 
 int main(int argc, char** argv)
 {
-    if (argc < 2)
+    do_count_chars = false;
+    do_count_words = false;
+    do_count_lines = false;
+    size_t argpos = 1;
+
+    while (argv[argpos] && *argv[argpos] == '-')
     {
-        printf("%u\n", fgetlen(0));
+        if (!strcmp(argv[argpos], "-c"))
+            do_count_chars = true;
+        else if (!strcmp(argv[argpos], "-w"))
+            do_count_words = true;
+        else if (!strcmp(argv[argpos], "-l"))
+            do_count_lines = true;
+
+        argpos++;
+    }
+
+    if (!do_count_chars && !do_count_words && !do_count_lines)
+    {
+         do_count_chars = true;
+         do_count_words = true;
+         do_count_lines = true;
+    }
+
+    if (argpos == argc)
+    {
+        fprintcounts(0, NULL);
         return 0;
     }
 
-    for (size_t i = 1; i < argc; i++)
+    for (size_t i = argpos; i < argc; i++)
         if (!fork())
         {
             int fd = open(argv[i], O_RDONLY);
-            printf("%u %s\n", fgetlen(fd), argv[i]);
+            fprintcounts(fd, argv[i]);
             close(fd);
             exit(0);
         }
