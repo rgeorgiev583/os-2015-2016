@@ -26,17 +26,19 @@ int main(int argc, char** argv)
     {
         argpos++;
     }
-    if (!strcmp(argv[1], "-v"))
+
+    const char *set = argv[argpos], *subst_set = argv[argpos + 1];
+
+    if (!set || !subst_set)
     {
-        do_pos = true;
-        argpos++;
+        fprintf(stderr, "error: not enough arguments\n");
+        return 1;
     }
 
-    char buf[BUFSIZE];
-    ssize_t len;
-    const char *set = argv[argpos], *subst_set = argv[argpos + 1];
     size_t set_len = strlen(set), count = 0, pos = 0;
     size_t* counts = calloc(set_len, sizeof(size_t));
+    char buf[BUFSIZE];
+    ssize_t len;
 
     while (len = read(0, buf, BUFSIZE))
     {
