@@ -17,13 +17,13 @@ int main(int argc, char** argv)
     bool do_count = false, do_pos = false;
     size_t argpos = 1;
 
-    if (!strcmp(argv[argpos], "-s"))
+    while (argv[argpos] && *argv[argpos] == '-')
     {
-        do_count = true;
-        argpos++;
-    }
-    if (!strcmp(argv[1], "-w"))
-    {
+        if (!strcmp(argv[argpos], "-s"))
+            do_count = true;
+        else if (!strcmp(argv[argpos], "-v"))
+            do_pos = true;
+
         argpos++;
     }
 
