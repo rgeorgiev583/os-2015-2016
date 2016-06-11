@@ -51,7 +51,7 @@ int main(int argc, char** argv)
                     counts[j]++;
 
                     if (do_pos)
-                        fprintf(stderr, "%u %c %c\n", pos, buf[i], set[j]);
+                        fprintf(stderr, "%u %c %c\n", pos, set[j], buf[i]);
 
                     break;
                 }
