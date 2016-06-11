@@ -9,7 +9,10 @@
 int main(int argc, char** argv)
 {
     if (argc < 3)
+    {
+        fprintf(stderr, "error: not enough arguments\n");
         return 1;
+    }
 
     bool do_count = false, do_pos = false;
     size_t argpos = 1;

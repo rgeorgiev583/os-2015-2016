@@ -23,7 +23,10 @@ size_t fgetcount(int fd, char ch)
 int main(int argc, char** argv)
 {
     if (argc < 2)
+    {
+        fprintf(stderr, "error: not enough arguments\n");
         return 1;
+    }
 
     const char ch = *argv[1];
 
