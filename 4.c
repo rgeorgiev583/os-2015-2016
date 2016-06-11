@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 #include <unistd.h>
 #include <sys/wait.h>
 
@@ -25,13 +26,21 @@ int main(int argc, char** argv)
         while (args[++i] = strtok(NULL, " \t\n"));
         args[i - 1] = NULL;
 
+        bool background = false;
+        if (*args[i - 2] == '&')
+            background = true;
+
         if (!fork())
             execvp(args[0], args);
         else
         {
             int status;
-            pid_t cpid = wait(&status);
-            printf("Child %d exited with status code %d.\n", cpid, WEXITSTATUS(status));
+
+            if (!background || background && !fork())
+            {
+                pid_t cpid = wait(&status);
+                printf("Child %d exited with status code %d.\n", cpid, WEXITSTATUS(status));
+            }
         }
 
         write(1, "$ ", 2);
