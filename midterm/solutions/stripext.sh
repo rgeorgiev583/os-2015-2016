@@ -10,7 +10,7 @@ stripext()
     done
 }
 
-for filename in "$@"
+for filename
 do
     stripext < $filename
 done

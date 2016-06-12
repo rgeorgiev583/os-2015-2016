@@ -12,12 +12,12 @@ then
     name=$1
     shift
 
-    for user in "$@"
+    for user
     do
         kill $(ps aux | grep ^$user | grep $name | awk '{ print $2 }')
     done
 else
-    for user in "$@"
+    for user
     do
         kill $(ps aux | grep ^$user | awk '{ print $2 }')
     done
