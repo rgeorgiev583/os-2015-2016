@@ -4,6 +4,9 @@
 #include <string.h>
 #include <stdio.h>
 
+// Implemented extra credit! (+1)
+// Excellent implementation! stdin is not supported, though.
+
 int main(int argc, char *argv[]) {
   char c;
   int read_count;
@@ -29,8 +32,8 @@ int main(int argc, char *argv[]) {
       int fd = open(filename, O_RDONLY);
 
       int lines = 0;
-      int words = 0;
-      int chars = 0;
+      int words = 0; // This should have started from one.
+      int chars = 0; // This should have started from one.
       while ((read_count = read(fd, &c, 1))) {
         if (c == ' ') {
           words++;
@@ -64,3 +67,5 @@ int main(int argc, char *argv[]) {
 
   return 0;
 }
+
+// Total points for this task:  3/2
