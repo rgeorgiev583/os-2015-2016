@@ -1,0 +1,14 @@
+#!/bin/bash
+
+first=$1
+firstdir=$2
+seconddir=$3
+second=$(eval echo $seconddir/\${first\#$firstdir})
+
+if [ -d $first ] && ! [ -e $second ]
+then
+    mkdir $second
+elif ! [ -e $second ] || [ $(stat -c %Y $first) -gt $(stat -c %Y ${second}.gz) ]
+then
+    gzip -c $first > ${second}.gz
+fi
