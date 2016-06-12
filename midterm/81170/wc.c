@@ -32,8 +32,8 @@ int main(int argc, char *argv[]) {
       int fd = open(filename, O_RDONLY);
 
       int lines = 0;
-      int words = 0; // This should have started from one.
-      int chars = 0; // This should have started from one.
+      int words = 0;
+      int chars = 0;
       while ((read_count = read(fd, &c, 1))) {
         if (c == ' ') {
           words++;
