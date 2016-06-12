@@ -4,6 +4,8 @@
 #include <string.h>
 #include <stdio.h>
 
+// Excellent implementation! stdin is not supported, though.
+
 int main(int argc, char *argv[]) {
   char c;
   int read_count;
@@ -35,3 +37,5 @@ int main(int argc, char *argv[]) {
 
   return 0;
 }
+
+// Total points for this task:  2/2
